@@ -1,0 +1,8 @@
+{
+  "name": "Script Lua",
+  "description": "A high-performance script repository and executor hub for gamers, featuring AI-powered script generation and analysis.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
