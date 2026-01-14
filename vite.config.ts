@@ -6,12 +6,16 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
-    // Inietta la variabile d'ambiente process.env.API_KEY nel codice client-side
-    // Questo permette all'SDK di Gemini di funzionare su Vercel usando i "Secrets" del progetto
-    'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+    // Assicuriamoci che la chiave sia sempre una stringa, anche se non definita nel sistema di build
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || ""),
+  },
+  server: {
+    port: 3000,
+    host: true
   },
   build: {
     outDir: 'dist',
+    sourcemap: false,
     rollupOptions: {
       input: {
         main: './index.html',
